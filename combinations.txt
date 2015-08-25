@@ -1,0 +1,27 @@
+class Solution {
+public:
+	void helper(int n, int k,vector<vector<int>>& res, vector<int>& r, int st)
+	{
+		if (r.size() == k) 
+		{
+			res.push_back(r);
+			return;
+		}
+		else
+		{
+			for (int i = st; i <= n; i++)
+			{
+				r.push_back(i);
+				helper(n,k,res,r,i+1);
+				r.pop_back();
+			}
+		}
+	}
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>> res;
+		vector<int> r;
+
+		helper(n,k,res,r,1);
+		return res;
+    }
+};
